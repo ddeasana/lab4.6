@@ -1,5 +1,7 @@
 package lab6;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -8,14 +10,14 @@ import java.util.Map;
 
 class DatabaseSchema {
     private static DatabaseSchema instance;
-    private Map<String, String> schema;
+    private ArrayList<RelationalTable> schema;
 
     /**
      * private constructor
      */
     private DatabaseSchema() {
         // Initialize database schema
-        schema = new HashMap<>();
+        schema = new ArrayList<>();
     }
 
     /**
@@ -31,19 +33,12 @@ class DatabaseSchema {
 
     /**
      * func for adding tables to database
-     * @param tableName name of table
-     * @param tableDefinition type of table data
+     * @param table is a table to be added
      */
-    public void addTable(String tableName, String tableDefinition) {
-        schema.put(tableName, tableDefinition);
+    public void addTable(RelationalTable table) {
+        schema.add(table);
     }
 
-    /**
-     * func to get definition of table
-     * @param tableName name of table
-     * @return table definition
-     */
-    public String getTableDefinition(String tableName) {
-        return schema.get(tableName);
-    }
+
+
 }
